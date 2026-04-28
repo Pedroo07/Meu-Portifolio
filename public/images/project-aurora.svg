@@ -1,0 +1,26 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" rx="48" fill="#07111F"/>
+  <rect x="44" y="44" width="1512" height="912" rx="36" stroke="#38BDF8" stroke-opacity="0.16" stroke-width="2"/>
+  <rect x="120" y="140" width="1360" height="720" rx="32" fill="url(#paint0_linear)"/>
+  <rect x="180" y="208" width="328" height="530" rx="28" fill="#0C1629" stroke="#38BDF8" stroke-opacity="0.12"/>
+  <rect x="552" y="208" width="286" height="240" rx="28" fill="#0C1629" stroke="#38BDF8" stroke-opacity="0.12"/>
+  <rect x="878" y="208" width="420" height="240" rx="28" fill="#0C1629" stroke="#38BDF8" stroke-opacity="0.12"/>
+  <rect x="552" y="490" width="746" height="248" rx="28" fill="#0C1629" stroke="#38BDF8" stroke-opacity="0.12"/>
+  <rect x="214" y="252" width="202" height="16" rx="8" fill="#38BDF8" fill-opacity="0.5"/>
+  <rect x="214" y="290" width="188" height="16" rx="8" fill="#94A3B8" fill-opacity="0.22"/>
+  <rect x="214" y="336" width="244" height="240" rx="20" fill="#0EA5E9" fill-opacity="0.12"/>
+  <rect x="590" y="252" width="168" height="16" rx="8" fill="#38BDF8" fill-opacity="0.42"/>
+  <rect x="590" y="288" width="122" height="16" rx="8" fill="#94A3B8" fill-opacity="0.2"/>
+  <rect x="914" y="252" width="250" height="16" rx="8" fill="#38BDF8" fill-opacity="0.42"/>
+  <rect x="914" y="288" width="192" height="16" rx="8" fill="#94A3B8" fill-opacity="0.2"/>
+  <rect x="590" y="536" width="222" height="16" rx="8" fill="#38BDF8" fill-opacity="0.42"/>
+  <rect x="590" y="572" width="364" height="16" rx="8" fill="#94A3B8" fill-opacity="0.22"/>
+  <rect x="590" y="620" width="638" height="58" rx="18" fill="#0EA5E9" fill-opacity="0.1"/>
+  <text x="120" y="98" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="34" font-weight="700">AURORA COMMERCE</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="800" y1="140" x2="800" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10213B"/>
+      <stop offset="1" stop-color="#08111F"/>
+    </linearGradient>
+  </defs>
+</svg>

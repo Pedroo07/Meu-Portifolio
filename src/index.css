@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope Variable", sans-serif;
+  --font-display: "Sora Variable", sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  --page: #020617;
+  --section: rgba(7, 15, 30, 0.74);
+  --panel: rgba(10, 18, 34, 0.82);
+  --border: rgba(148, 163, 184, 0.16);
+  --border-strong: rgba(56, 189, 248, 0.28);
+  --shadow-lg: 0 28px 70px rgba(2, 8, 23, 0.45);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 1)),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.04), transparent 35%, transparent 65%, rgba(37, 99, 235, 0.05));
+  color: #e2e8f0;
+  font-family: "Manrope Variable", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.35);
+  color: #f8fafc;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+.site-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(14, 165, 233, 0.08) 0%, transparent 24%, transparent 76%, rgba(59, 130, 246, 0.08) 100%);
+  background-size: 96px 96px, 96px 96px, 100% 100%;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 92%);
+}
+
+.section-anchor {
+  scroll-margin-top: 7rem;
+}
+
+.glass-panel {
+  background: linear-gradient(180deg, rgba(12, 20, 36, 0.9), rgba(8, 15, 28, 0.68));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(18px);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.hero-word {
+  display: inline-flex;
+  min-height: 1.4em;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.hero-word-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.hero-word-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(0.8);
+}

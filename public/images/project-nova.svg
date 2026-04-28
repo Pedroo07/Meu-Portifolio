@@ -1,0 +1,26 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" rx="48" fill="#07111F"/>
+  <rect x="44" y="44" width="1512" height="912" rx="36" stroke="#38BDF8" stroke-opacity="0.16" stroke-width="2"/>
+  <rect x="120" y="170" width="1360" height="660" rx="36" fill="url(#paint0_linear)"/>
+  <rect x="196" y="246" width="1208" height="92" rx="26" fill="#0B1627" stroke="#38BDF8" stroke-opacity="0.12"/>
+  <rect x="196" y="380" width="318" height="372" rx="28" fill="#0B1627" stroke="#38BDF8" stroke-opacity="0.12"/>
+  <rect x="552" y="380" width="852" height="154" rx="28" fill="#0B1627" stroke="#38BDF8" stroke-opacity="0.12"/>
+  <rect x="552" y="572" width="852" height="180" rx="28" fill="#0B1627" stroke="#38BDF8" stroke-opacity="0.12"/>
+  <rect x="242" y="280" width="278" height="22" rx="11" fill="#38BDF8" fill-opacity="0.42"/>
+  <rect x="592" y="280" width="496" height="22" rx="11" fill="#94A3B8" fill-opacity="0.2"/>
+  <rect x="236" y="430" width="194" height="18" rx="9" fill="#38BDF8" fill-opacity="0.42"/>
+  <rect x="236" y="468" width="150" height="18" rx="9" fill="#94A3B8" fill-opacity="0.22"/>
+  <rect x="236" y="522" width="236" height="126" rx="24" fill="#0EA5E9" fill-opacity="0.12"/>
+  <rect x="590" y="426" width="214" height="18" rx="9" fill="#38BDF8" fill-opacity="0.42"/>
+  <rect x="590" y="464" width="478" height="18" rx="9" fill="#94A3B8" fill-opacity="0.22"/>
+  <rect x="590" y="618" width="260" height="18" rx="9" fill="#38BDF8" fill-opacity="0.42"/>
+  <rect x="590" y="656" width="612" height="18" rx="9" fill="#94A3B8" fill-opacity="0.22"/>
+  <rect x="590" y="696" width="612" height="18" rx="9" fill="#94A3B8" fill-opacity="0.18"/>
+  <text x="120" y="110" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="34" font-weight="700">NOVA API HUB</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="800" y1="170" x2="800" y2="830" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10233F"/>
+      <stop offset="1" stop-color="#08111E"/>
+    </linearGradient>
+  </defs>
+</svg>
