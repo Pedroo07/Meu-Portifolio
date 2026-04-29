@@ -15,7 +15,7 @@ function Header({ brandName, navLinks }) {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="inline-flex rounded-full border border-white/10 px-3 py-2 text-sm font-medium text-slate-300 transition duration-300 hover:-translate-y-0.5 hover:border-sky-400/40 hover:bg-sky-400/8 hover:text-white"
+                  className="inline-flex rounded-full border border-white/10 px-3 py-2 text-sm font-medium text-slate-300 transition duration-300 hover:-translate-y-0.1 hover:border-sky-400/40 hover:bg-sky-400/8 hover:text-white"
                 >
                   {item.label}
                 </a>

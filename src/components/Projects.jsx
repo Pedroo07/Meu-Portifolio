@@ -12,8 +12,8 @@ function Projects() {
         <Reveal>
           <SectionHeading
             eyebrow="Projetos"
-            title="Cards limpos, visual forte e foco em mostrar resultado com rapidez."
-            description="Cada projeto abaixo usa texto e links placeholder para facilitar a substitui\u00E7\u00E3o por cases reais assim que voc\u00EA quiser publicar."
+            title="Meus projetos."
+            description=""
           />
         </Reveal>
 

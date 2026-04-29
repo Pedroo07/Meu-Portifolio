@@ -1,13 +1,49 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { budgetUrgencyOptions } from '../data/siteData'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 
 function BudgetForm() {
   const [submitted, setSubmitted] = useState(false)
-
-  function handleSubmit(event) {
+  const nome = useRef('')
+  const fone = useRef('')
+  const email = useRef('')
+  const descricao = useRef('')
+  const urgencia = useRef('')
+  const dataInicio = useRef('')
+  const dataFim = useRef('')
+  const valorMin = useRef('')
+  const valorMax = useRef('')
+  
+  async function handleSubmit(event) {
     event.preventDefault()
+    const message = `
+    📩 Novo Lead
+
+    Nome: ${nome.current.value}
+    Email: ${email.current.value}
+    Telefone: ${fone.current.value}
+
+    Projeto: ${descricao.current.value}
+
+    Urgência: ${urgencia.current.value}
+    Início: ${dataInicio.current.value}
+    Final: ${dataFim.current.value}
+
+    Orçamento:
+    Mín: R$ ${valorMin.current.value}
+    Máx: R$ ${valorMax.current.value}
+    `;
+
+    await fetch("https://discord.com/api/webhooks/1498872190085369877/l74KvE1DiTVURML_WHhigEwy7EpSho6I4-wh-2yx4EX-CRLOkk1yxD8DYjdrVsLhEEn4", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        content: message,
+      }),
+    });
     setSubmitted(true)
   }
 
@@ -35,6 +71,7 @@ function BudgetForm() {
                   <input
                     type="text"
                     name="name"
+                    ref={nome}
                     placeholder="Seu nome"
                     className="w-full rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-white outline-none transition duration-300 placeholder:text-slate-500 focus:border-sky-400/45"
                     required
@@ -45,6 +82,7 @@ function BudgetForm() {
                   <span>Email</span>
                   <input
                     type="email"
+                    ref={email}
                     name="email"
                     placeholder="voce@empresa.com"
                     className="w-full rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-white outline-none transition duration-300 placeholder:text-slate-500 focus:border-sky-400/45"
@@ -56,6 +94,7 @@ function BudgetForm() {
                   <span>Telefone</span>
                   <input
                     type="tel"
+                    ref={fone}
                     name="phone"
                     placeholder="(00) 00000-0000"
                     className="w-full rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-white outline-none transition duration-300 placeholder:text-slate-500 focus:border-sky-400/45"
@@ -73,6 +112,7 @@ function BudgetForm() {
                 <span>Descrição do projeto</span>
                 <textarea
                   name="description"
+                  ref={descricao}
                   rows="5"
                   placeholder="Conte sobre o objetivo, escopo e contexto do projeto."
                   className="w-full resize-none rounded-[1.5rem] border border-white/10 bg-slate-950/55 px-4 py-3 text-white outline-none transition duration-300 placeholder:text-slate-500 focus:border-sky-400/45"
@@ -91,6 +131,7 @@ function BudgetForm() {
                   <span>Nível de urgência</span>
                   <select
                     name="urgency"
+                    ref={urgencia}
                     className="w-full rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-white outline-none transition duration-300 focus:border-sky-400/45"
                     defaultValue={budgetUrgencyOptions[0]}
                   >
@@ -106,6 +147,7 @@ function BudgetForm() {
                   <span>Prazo para início</span>
                   <input
                     type="date"
+                    ref={dataInicio}
                     name="startDate"
                     className="w-full rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-white outline-none transition duration-300 focus:border-sky-400/45"
                   />
@@ -115,6 +157,7 @@ function BudgetForm() {
                   <span>Prazo para finalização</span>
                   <input
                     type="date"
+                    ref={dataFim}
                     name="endDate"
                     className="w-full rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-white outline-none transition duration-300 focus:border-sky-400/45"
                   />
@@ -124,6 +167,7 @@ function BudgetForm() {
                   <span>Valor mínimo</span>
                   <input
                     type="number"
+                    ref={valorMin}
                     name="minBudget"
                     placeholder="3000"
                     className="w-full rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-white outline-none transition duration-300 placeholder:text-slate-500 focus:border-sky-400/45"
@@ -134,6 +178,7 @@ function BudgetForm() {
                   <span>Valor máximo</span>
                   <input
                     type="number"
+                    ref={valorMax}
                     name="maxBudget"
                     placeholder="12000"
                     className="w-full rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 text-white outline-none transition duration-300 placeholder:text-slate-500 focus:border-sky-400/45"
@@ -152,12 +197,10 @@ function BudgetForm() {
 
               <p
                 aria-live="polite"
-                className={`text-sm text-sky-200 transition duration-300 ${
-                  submitted ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`text-sm text-sky-200 transition duration-200 ${submitted ? 'opacity-100' : 'opacity-0'
+                  }`}
               >
-                Briefing capturado com sucesso. Agora basta conectar o backend
-                ou automação que você preferir.
+                Pedido de orçamento enviado.
               </p>
             </div>
           </form>
