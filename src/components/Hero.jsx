@@ -1,6 +1,5 @@
 import { heroLinks, heroMetrics, heroSpecialties } from '../data/siteData'
 import { useRotatingText } from '../hooks/useRotatingText'
-import heroVisual from '../assets/hero.png'
 import Reveal from './Reveal'
 
 function Hero() {
