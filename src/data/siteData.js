@@ -25,6 +25,8 @@ import {
 } from 'react-icons/si'
 import { TbApi } from 'react-icons/tb'
 
+const publicAsset = (path) => `${import.meta.env.BASE_URL}${path}`
+
 export const brandName = 'Pedroo.'
 
 export const navLinks = [
@@ -90,7 +92,7 @@ export const aboutContent = {
 
   'Tenho como principal linguagem o TypeScript, utilizando frameworks modernos e robustos que melhor se encaixam em cada aplicação, entre eles Next.js, React.js, Vue.js, Node.js e NestJS.Também possuo experiência com bancos de dados relacionais, principalmente com PostgreSQL, além de atuar no desenvolvimento mobile com React Native.'
   ],
-  image: '/images/eu1.webp',
+  image: publicAsset('images/eu1.webp'),
   highlights: [
   ],
 }
@@ -120,21 +122,21 @@ export const projects = [
     name: 'Aurora Commerce',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget magna vitae lacus gravida commodo.',
-    image: '/images/project-aurora.svg',
+    image: publicAsset('images/project-aurora.svg'),
     link: 'https://example.com/aurora-commerce',
   },
   {
     name: 'Pulse Booking',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra ante in purus posuere tristique.',
-    image: '/images/project-pulse.svg',
+    image: publicAsset('images/project-pulse.svg'),
     link: 'https://example.com/pulse-booking',
   },
   {
     name: 'Nova API Hub',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id lacus vitae risus luctus vulputate.',
-    image: '/images/project-nova.svg',
+    image: publicAsset('images/project-nova.svg'),
     link: 'https://example.com/nova-api-hub',
   },
 ]
