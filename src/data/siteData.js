@@ -38,7 +38,7 @@ export const navLinks = [
 ]
 
 const whatsappMessage =
-  'Ol\u00E1, vim pelo seu portf\u00F3lio e gostaria de falar sobre um projeto.'
+  'Olá, vim pelo seu portfólio e gostaria de falar sobre um projeto.'
 
 export const whatsappUrl = `https://wa.me/5538999367626?text=${encodeURIComponent(
   whatsappMessage,
@@ -48,7 +48,7 @@ export const heroSpecialties = [
   'Desenvolvimento Web',
   'Aplicativos Mobile',
   'APIs REST',
-  'Aplica\u00E7\u00F5es Desktop',
+  'Aplicações Desktop',
 ]
 
 export const heroLinks = [
@@ -69,7 +69,7 @@ export const heroLinks = [
   },
   {
     label: 'Email',
-    href: 'mailto:hello@pedroo.dev',
+    href: 'mailto:contato@pedroodev.com',
     icon: HiOutlineMail,
   },
   {
@@ -144,7 +144,7 @@ export const projects = [
 export const budgetUrgencyOptions = [
   'Sem pressa',
   'Baixa',
-  'M\u00E9dia',
+  'Média',
   'Alta',
   'Urgente',
 ]
@@ -152,8 +152,8 @@ export const budgetUrgencyOptions = [
 export const directContactLinks = [
   {
     label: 'Enviar email',
-    description: 'Ideal para briefings completos, refer\u00EAncias e anexos.',
-    href: 'mailto:hello@pedroo.dev?subject=Novo%20projeto%20via%20portfolio',
+    description: 'Ideal para briefings completos, referências e anexos.',
+    href: 'mailto:contato@pedroodev.com?subject=Novo%20projeto%20via%20portfolio',
     icon: HiOutlineMail,
   },
   {
