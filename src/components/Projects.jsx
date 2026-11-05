@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import {
   HiOutlineArrowLeft,
   HiOutlineArrowRight,
   HiOutlineArrowTopRightOnSquare,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
 } from 'react-icons/hi2'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
@@ -19,14 +21,14 @@ const projects = [
     github: 'https://github.com/Pedroo07/B-Finances',
     live: 'https://b-finances.vercel.app/',
     images: [
-      { file: 'Dashboard.png', alt: 'Painel geral do B-Finances' },
-      { file: 'Transações.png', alt: 'Histórico de transações financeiras' },
-      { file: 'Sessão-de-cartões.png', alt: 'Área de cartões e faturas' },
-      { file: 'Contas-a-pagar.png', alt: 'Contas a pagar e recorrências' },
-      { file: 'Investimentos.png', alt: 'Área de investimentos' },
+      { file: 'Dashboard.png', alt: 'Painel geral do B-Finances com visão financeira consolidada' },
+      { file: 'Transações.png', alt: 'Extrato detalhado e histórico de transações' },
+      { file: 'Sessão-de-cartões.png', alt: 'Gerenciamento de cartões de crédito e faturas' },
+      { file: 'Contas-a-pagar.png', alt: 'Contas a pagar e previsões de despesas' },
+      { file: 'Investimentos.png', alt: 'Carteira de investimentos e rendimentos' },
       {
         file: 'organize-suas-finaças-pelo-whatssap.png',
-        alt: 'Assistente financeiro pelo WhatsApp',
+        alt: 'Assistente financeiro integrado via WhatsApp',
         presentation: 'phone',
       },
     ],
@@ -39,17 +41,17 @@ const projects = [
     github: 'https://github.com/Pedroo07/B-Trainning',
     live: 'https://b-training.vercel.app/',
     images: [
-      { file: 'treine-com-facilidade.png', alt: 'Apresentação do B-Training' },
-      { file: 'Crie-sua-conta.png', alt: 'Criação de conta no B-Training' },
-      { file: 'Catálogo-de-exercíos.png', alt: 'Catálogo de exercícios' },
-      { file: 'monte-seu-treino.png', alt: 'Montagem de um treino personalizado' },
-      { file: 'Treino-Personalizado.png', alt: 'Detalhes do treino personalizado' },
+      { file: 'treine-com-facilidade.png', alt: 'Apresentação do app B-Training e rotinas de treino' },
+      { file: 'Crie-sua-conta.png', alt: 'Fluxo de cadastro e criação de conta' },
+      { file: 'Catálogo-de-exercíos.png', alt: 'Catálogo de exercícios com filtros e orientações' },
+      { file: 'monte-seu-treino.png', alt: 'Painel de montagem de ficha de treino personalizada' },
+      { file: 'Treino-Personalizado.png', alt: 'Visualização de ficha de treino estruturada' },
       {
         file: 'treine-em-tempo-real.png',
-        alt: 'Execução do treino em tempo real',
+        alt: 'Execução e cronometragem do treino em tempo real no mobile',
         presentation: 'phone',
       },
-      { file: 'evolução.png', alt: 'Acompanhamento da evolução dos treinos' },
+      { file: 'evolução.png', alt: 'Gráficos de evolução física e métricas de desempenho' },
     ],
   },
   {
@@ -60,19 +62,19 @@ const projects = [
     github: 'https://github.com/Pedroo07/B-Stocks',
     live: 'https://b-stocks-br.vercel.app',
     images: [
-      { file: 'Captura de tela 2026-11-05 105214.png', alt: 'Visão geral do mercado e índices da B3' },
-      { file: 'Captura de tela 2026-11-05 105224.png', alt: 'Destaques e maiores altas e baixas' },
-      { file: 'Captura de tela 2026-11-05 105227.png', alt: 'Terminal de cotações e empresas' },
-      { file: 'Captura de tela 2026-11-05 105236.png', alt: 'Ranking e filtros fundamentalistas de ações' },
-      { file: 'Captura de tela 2026-11-05 105243.png', alt: 'Análise detalhada e indicadores da ação' },
-      { file: 'Captura de tela 2026-11-05 105254.png', alt: 'Modelos de valuation Bazin e Graham' },
-      { file: 'Captura de tela 2026-11-05 105307.png', alt: 'Notícias e acontecimentos do mercado financeiro' },
-      { file: 'Captura de tela 2026-11-05 105353.png', alt: 'Metodologia e perguntas frequentes' },
+      { file: 'Captura de tela 2026-11-05 105214.png', alt: 'Visão geral do mercado B3 e gráfico interativo do Ibovespa' },
+      { file: 'Captura de tela 2026-11-05 105224.png', alt: 'Rankings dos melhores ativos por liquidez, receita e capitalização' },
+      { file: 'Captura de tela 2026-11-05 105227.png', alt: 'Terminal de cotações com cards de resumo do mercado' },
+      { file: 'Captura de tela 2026-11-05 105236.png', alt: 'Tabela quantitativa de ações com filtros de corte e múltiplos fundamentalistas' },
+      { file: 'Captura de tela 2026-11-05 105243.png', alt: 'Modal de análise com valuation de Bazin, Graham e tese com IA' },
+      { file: 'Captura de tela 2026-11-05 105254.png', alt: 'Metodologia de engenharia quantitativa e cálculo de score' },
+      { file: 'Captura de tela 2026-11-05 105307.png', alt: 'Seção de notícias e atualizações da Bolsa em tempo real' },
+      { file: 'Captura de tela 2026-11-05 105353.png', alt: 'Perguntas frequentes (FAQ) e arquitetura da plataforma' },
     ],
   },
 ]
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project }) {
   const [activeImage, setActiveImage] = useState(0)
   const image = project.images[activeImage]
   const projectFolderMap = {
@@ -90,10 +92,7 @@ function ProjectCard({ project, index }) {
   }
 
   return (
-    <Reveal
-      delay={index * 100}
-      className="group overflow-hidden rounded-[1.8rem] border border-white/10 bg-slate-950/55 transition duration-300 hover:-translate-y-1 hover:border-sky-400/30 hover:shadow-[0_24px_50px_rgba(2,8,23,0.35)]"
-    >
+    <div className="group flex h-full flex-col overflow-hidden rounded-[1.8rem] border border-white/10 bg-slate-950/55 transition duration-300 hover:border-sky-400/30 hover:shadow-[0_24px_50px_rgba(2,8,23,0.35)]">
       <div className="relative overflow-hidden bg-slate-900">
         {isPhoneScreenshot ? (
           <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-slate-950">
@@ -135,7 +134,7 @@ function ProjectCard({ project, index }) {
             </button>
 
             <span
-              className="absolute bottom-3 left-3 z-10 max-w-[30%] break-words rounded-lg border border-white/10 bg-slate-950/80 px-2.5 py-1.5 text-[10px] font-medium leading-4 text-white/90 backdrop-blur-sm sm:bottom-4 sm:left-4 sm:text-xs"
+              className="absolute bottom-3 left-3 z-10 max-w-[55%] break-words rounded-lg border border-white/10 bg-slate-950/80 px-2.5 py-1.5 text-[10px] font-medium leading-4 text-white/90 backdrop-blur-sm sm:bottom-4 sm:left-4 sm:text-xs"
               aria-live="polite"
             >
               {image.alt}
@@ -152,7 +151,7 @@ function ProjectCard({ project, index }) {
             />
 
             <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent px-5 pb-4 pt-12">
-              <span className="text-xs font-medium text-white/90" aria-live="polite">
+              <span className="max-w-[70%] text-xs font-medium text-white/90" aria-live="polite">
                 {image.alt}
               </span>
               <div className="flex shrink-0 items-center gap-2">
@@ -178,7 +177,7 @@ function ProjectCard({ project, index }) {
         )}
       </div>
 
-      <div className="space-y-6 p-6 sm:p-7">
+      <div className="flex flex-1 flex-col justify-between space-y-6 p-6 sm:p-7">
         <div className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-200/70">
             {project.eyebrow}
@@ -191,70 +190,165 @@ function ProjectCard({ project, index }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Abrir ${project.name} no site publicado em nova guia`}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-sky-300 px-3 text-sm font-bold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-200"
-          >
-            <HiOutlineArrowTopRightOnSquare aria-hidden="true" className="text-base" />
-            Acessar projeto
-          </a>
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Abrir repositório do ${project.name} no GitHub em nova guia`}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/40 hover:bg-sky-300/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-200"
-          >
-            <FaGithub aria-hidden="true" className="text-base" />
-            GitHub
-          </a>
-        </div>
+        <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-3">
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Abrir ${project.name} no site publicado em nova guia`}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-sky-300 px-3 text-sm font-bold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-200"
+            >
+              <HiOutlineArrowTopRightOnSquare aria-hidden="true" className="text-base" />
+              Acessar projeto
+            </a>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Abrir repositório do ${project.name} no GitHub em nova guia`}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/40 hover:bg-sky-300/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-200"
+            >
+              <FaGithub aria-hidden="true" className="text-base" />
+              GitHub
+            </a>
+          </div>
 
-        <div className="flex items-center justify-center gap-1.5" aria-label={`Imagem ${activeImage + 1} de ${project.images.length}`}>
-          {project.images.map((item, dotIndex) => (
-            <button
-              key={item.file}
-              type="button"
-              onClick={() => setActiveImage(dotIndex)}
-              aria-label={`Mostrar imagem ${dotIndex + 1}: ${item.alt}`}
-              aria-pressed={dotIndex === activeImage}
-              className={`h-1.5 rounded-full transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 ${
-                dotIndex === activeImage
-                  ? 'w-6 bg-sky-300'
-                  : 'w-1.5 bg-white/25 hover:bg-white/50'
-              }`}
-            />
-          ))}
+          <div className="flex items-center justify-center gap-1.5" aria-label={`Imagem ${activeImage + 1} de ${project.images.length}`}>
+            {project.images.map((item, dotIndex) => (
+              <button
+                key={item.file}
+                type="button"
+                onClick={() => setActiveImage(dotIndex)}
+                aria-label={`Mostrar imagem ${dotIndex + 1}: ${item.alt}`}
+                aria-pressed={dotIndex === activeImage}
+                className={`h-1.5 rounded-full transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 ${
+                  dotIndex === activeImage
+                    ? 'w-6 bg-sky-300'
+                    : 'w-1.5 bg-white/25 hover:bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </Reveal>
+    </div>
   )
 }
 
 function Projects() {
+  const scrollContainerRef = useRef(null)
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0)
+
+  const scrollToIndex = (index) => {
+    const container = scrollContainerRef.current
+    if (!container) return
+    const targetChild = container.children[index]
+    if (targetChild) {
+      targetChild.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start',
+      })
+      setActiveProjectIndex(index)
+    }
+  }
+
+  const handleScroll = () => {
+    const container = scrollContainerRef.current
+    if (!container) return
+    const scrollLeft = container.scrollLeft
+    const childWidth = container.children[0]?.offsetWidth || 1
+    const gap = 24
+    const newIndex = Math.round(scrollLeft / (childWidth + gap))
+    if (newIndex >= 0 && newIndex < projects.length && newIndex !== activeProjectIndex) {
+      setActiveProjectIndex(newIndex)
+    }
+  }
+
+  const scrollPrev = () => {
+    const nextIdx = Math.max(0, activeProjectIndex - 1)
+    scrollToIndex(nextIdx)
+  }
+
+  const scrollNext = () => {
+    const nextIdx = Math.min(projects.length - 1, activeProjectIndex + 1)
+    scrollToIndex(nextIdx)
+  }
+
   return (
     <section
       id="projects"
       className="section-anchor border-b border-white/10 bg-[var(--section)]"
     >
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
         <Reveal>
-          <SectionHeading
-            eyebrow="Projetos"
-            title="Projetos que já estão no ar."
-            description="Produtos que desenvolvi para resolver necessidades reais, com atenção à experiência, às regras de negócio e aos detalhes de cada fluxo."
-          />
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Projetos"
+              title="Projetos que já estão no ar."
+              description="Produtos que desenvolvi para resolver necessidades reais, com atenção à experiência, às regras de negócio e aos detalhes de cada fluxo."
+            />
+
+            <div className="flex shrink-0 items-center gap-3">
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                {activeProjectIndex + 1} de {projects.length}
+              </span>
+              <button
+                type="button"
+                onClick={scrollPrev}
+                disabled={activeProjectIndex === 0}
+                aria-label="Projeto anterior"
+                className="inline-flex size-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-white transition hover:border-sky-300/40 hover:bg-sky-400/10 disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
+              >
+                <HiOutlineChevronLeft className="text-lg" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={scrollNext}
+                disabled={activeProjectIndex === projects.length - 1}
+                aria-label="Próximo projeto"
+                className="inline-flex size-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-white transition hover:border-sky-300/40 hover:bg-sky-400/10 disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
+              >
+                <HiOutlineChevronRight className="text-lg" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2 lg:gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.name} project={project} index={index} />
-          ))}
-        </div>
+        <Reveal delay={150}>
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 pt-1 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none]"
+          >
+            {projects.map((project, index) => (
+              <div
+                key={project.name}
+                className="w-full shrink-0 snap-start sm:w-[540px] lg:w-[600px] xl:w-[620px]"
+              >
+                <ProjectCard project={project} index={index} />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 flex items-center justify-center gap-2">
+            {projects.map((project, index) => (
+              <button
+                key={project.name}
+                type="button"
+                onClick={() => scrollToIndex(index)}
+                aria-label={`Ir para o projeto ${project.name}`}
+                aria-pressed={index === activeProjectIndex}
+                className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 ${
+                  index === activeProjectIndex
+                    ? 'w-8 bg-sky-300'
+                    : 'w-2 bg-white/20 hover:bg-white/40'
+                }`}
+              />
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   )
