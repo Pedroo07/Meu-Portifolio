@@ -52,12 +52,35 @@ const projects = [
       { file: 'evolução.png', alt: 'Acompanhamento da evolução dos treinos' },
     ],
   },
+  {
+    name: 'B-Stocks',
+    eyebrow: 'Análise quantitativa e fundamentalista da B3',
+    description:
+      'Plataforma completa em TypeScript para catalogar e analisar empresas da Bolsa de Valores (B3). Reúne indicadores, cálculo de Preço Teto Bazin, Preço Justo Graham, médias móveis SMA 50/200, IFR 14 e teses de investimento com IA.',
+    github: 'https://github.com/Pedroo07/B-Stocks',
+    live: 'https://b-stocks-br.vercel.app',
+    images: [
+      { file: 'Captura de tela 2026-11-05 105214.png', alt: 'Visão geral do mercado e índices da B3' },
+      { file: 'Captura de tela 2026-11-05 105224.png', alt: 'Destaques e maiores altas e baixas' },
+      { file: 'Captura de tela 2026-11-05 105227.png', alt: 'Terminal de cotações e empresas' },
+      { file: 'Captura de tela 2026-11-05 105236.png', alt: 'Ranking e filtros fundamentalistas de ações' },
+      { file: 'Captura de tela 2026-11-05 105243.png', alt: 'Análise detalhada e indicadores da ação' },
+      { file: 'Captura de tela 2026-11-05 105254.png', alt: 'Modelos de valuation Bazin e Graham' },
+      { file: 'Captura de tela 2026-11-05 105307.png', alt: 'Notícias e acontecimentos do mercado financeiro' },
+      { file: 'Captura de tela 2026-11-05 105353.png', alt: 'Metodologia e perguntas frequentes' },
+    ],
+  },
 ]
 
 function ProjectCard({ project, index }) {
   const [activeImage, setActiveImage] = useState(0)
   const image = project.images[activeImage]
-  const projectPath = project.name === 'B-Finances' ? 'B-finances' : 'B-training'
+  const projectFolderMap = {
+    'B-Finances': 'B-finances',
+    'B-Training': 'B-training',
+    'B-Stocks': 'B-stocks',
+  }
+  const projectPath = projectFolderMap[project.name] || project.name.toLowerCase()
   const imageUrl = publicAsset(`Projetos/${projectPath}/${image.file}`)
   const isPhoneScreenshot = image.presentation === 'phone'
 
